@@ -13,23 +13,13 @@
 #    See the License for the specific language governing permissions and
 #    limitations under the License.
 
-import os
-from setuptools import setup
-
-
-def find_mercury_packages():
-    """Fix for easily finding mercury packages and subpackages"""
-    packages = []
-    for container, _, items in os.walk('mercury'):
-        if '__init__.py' in items:
-            packages.append(container.replace('/', '.'))
-    return packages
+from setuptools import setup, find_packages
 
 
 setup(
     name='mercury-client',
     version='0.0.4',
-    packages=find_mercury_packages(),
+    packages=find_packages(exclude=['tests']),
     url='http://www.mercurysoft.io',
     license='Apache-2.0',
     author='Jared Rodriguez',
@@ -37,6 +27,7 @@ setup(
     description='Mercury Client libraries and CLI',
     install_requires=[
         'PyYAML',
-        'requests'
+        'requests',
+        'mercury'
     ]
 )
