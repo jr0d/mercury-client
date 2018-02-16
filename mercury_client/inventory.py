@@ -1,4 +1,4 @@
-from mercury.client.base import InterfaceBase
+from mercury_client.base import InterfaceBase
 
 
 class InventoryComputers(InterfaceBase):
